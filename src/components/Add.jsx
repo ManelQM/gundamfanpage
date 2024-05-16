@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const Add = () => {
-    const title = "Add Film";
+    const addFilm = "Add Film";
+    const [filmState, setFilmState] = useState({
+        title: "",
+        sinopsis: "",
+    })
+
+    const {title, sinopsis} = filmState;  
+
+    // Get the data and save in storage
     const getDataForm = e => {
         e.preventDefault(); 
 
@@ -15,11 +23,21 @@ export const Add = () => {
             title,
             sinopsis,
         }
-        console.log("Objeto JSON creado =>", film); 
+        setFilmState(film); 
+        console.log("Objeto creado =>", film); 
+        saveDataStorage(film); 
     }
+
+    // const saveDataStorage = film => {
+    //     localStorage.setItem("filmsDataStorage", JSON.stringify([film])); 
+    // }
+
   return (
     <div className="add">
       <h3 className="title"></h3>
+      <h1>
+      {(title && sinopsis) && `Film ${title} created with success`}
+      </h1>
       <strong></strong>
       <form onSubmit={getDataForm}>
         <input type="text" id="title" name="title" placeholder="Title"></input>
