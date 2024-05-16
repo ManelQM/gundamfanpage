@@ -8,7 +8,7 @@ export const Add = () => {
         sinopsis: "",
     })
 
-    const {title, sinopsis} = filmState;  
+    const {title, sinopsis} = filmState;  // de esta manera guardamos el estado de title y sinopsis para poder usarlos en cualquier formulario,header,componente,etc
 
     // Get the data and save in storage
     const getDataForm = e => {
@@ -26,13 +26,9 @@ export const Add = () => {
         }
         setFilmState(film); 
         
-        saveDataStorage("filsmDataStorage",film); 
+        saveDataStorage("filmsDataStorage",film); 
         console.log("Objeto creado =>", film); 
     }
-
-    // const saveDataStorage = film => {
-    //     localStorage.setItem("filmsDataStorage", JSON.stringify([film])); 
-    // }
 
   return (
     <div className="add">
