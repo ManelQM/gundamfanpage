@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { saveDataStorage } from "../helpers/SaveDataStorage";
 
 export const Add = () => {
     const addFilm = "Add Film";
@@ -24,8 +25,9 @@ export const Add = () => {
             sinopsis,
         }
         setFilmState(film); 
+        
+        saveDataStorage("filsmDataStorage",film); 
         console.log("Objeto creado =>", film); 
-        saveDataStorage(film); 
     }
 
     // const saveDataStorage = film => {
