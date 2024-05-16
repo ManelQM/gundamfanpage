@@ -1,5 +1,7 @@
 import { useState } from "react"
 import List from "./components/List"; 
+import Search from "./components/Search";
+import Add from "./components/Add";
 import gundamRx78 from "./img/PngItem_4082639.png"
 import "./App.css"
 
@@ -27,7 +29,8 @@ function App() {
       <List/>
       </section>
       <aside className="lateral">
-
+    <Search/>
+    <Add/>
       </aside>
       <footer className="footer">Visual No Video</footer>
     </div>
