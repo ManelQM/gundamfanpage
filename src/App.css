@@ -11,11 +11,12 @@ body {
   text-align: center;
   padding: 0px;
   margin: 0px;
+  display: block;
 }
 
 .layout {
   width: 100%;
-  height: auto;
+  height:fit-content;
   display: grid;
   grid-template-areas:
   "header header header header"
@@ -23,16 +24,17 @@ body {
   "content content content lateral"
   "footer footer footer footer";
   grid-template-rows: 100px 70px auto 70px;
+
 }
 
 .header {
   grid-area: header;
   border: 5px solid black;
-  background: rgb(250,225,10);
+  background: rgb(21,110,209);
   /* text-align: left; */
   font-style: italic;
   font-size: 14px;
-  color:rgb(228,40,47);
+  color:rgb(250,225,10);
   display: flex;
   justify-content: center;
   padding: 33px;
@@ -59,6 +61,7 @@ body {
   background:rgb(228,40,47); 
   text-align: center;
   border: 5px solid black; 
+  /* box-shadow: inset 0 0 0 3px rgb(21,110,209); */
   font-family: 'Gundam', sans-serif;    
   margin: 5px;                                                                                       
 }
@@ -96,12 +99,13 @@ body {
   grid-area: content;
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content:flex-start;
   align-items: flex-start;
 }
 
 .filmItem {
-  flex-grow: 1;
+  /* flex: 1 1 calc(23.33% - 40px); */
+  flex-grow: inherit;
   border-radius: 10px;
   border: 5px solid black;
   box-shadow: 0px 0px 6px #ddd;
@@ -114,7 +118,8 @@ body {
 }
 
 button, 
-input[type="button"]{
+input[type="button"],
+input[type="submit"]{
   width: 150px;
   background: rgb(228,40,47);
   color:rgb(234,229,231);
@@ -136,15 +141,16 @@ input[type="button"]{
 
 .filmItem .edit:hover{
   background: rgb(21,110,209); 
-  border:5px solid rgb(250,225,10) ;
+  box-shadow: inset 0 0 0 3px rgb(250,225,10);
   color:rgb(234,229,231);
 }
 
 .filmItem .delete:hover{
   background: rgb(21,110,209); 
-  border:5px solid rgb(250,225,10) ;
+  box-shadow: inset 0 0 0 3px rgb(250,225,10); ;
   color:rgb(234,229,231);
 }
+
 
 .lateral {
     grid-area: lateral;
@@ -154,10 +160,46 @@ input[type="button"]{
     /* border-left: 1px solid #ddd; */
     padding: 20px;
     margin: 5px;
+    /* display: flex; */
 }
 
+.lateral > div{
+  box-sizing: border-box;
+  width: 90%;
+  margin: 20px;
+  padding: 20px;
+  padding-top: 10px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px #ddd;
+}
+.lateral input[type="text"],
+.lateral input[type="text"],
+.lateral textarea{
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 5px;
+  background: #f6f7f9;
+  color: #454545;
+  width: 80%;
+  opacity: 4;
+  outline: 0;
+  border-color: transparent;
+}
+
+#save{
+  margin:10px
+}
+
+#save:hover{
+  background: rgb(21,110,209); 
+  box-shadow: inset 0 0 0 3px rgb(250,225,10);
+  color:rgb(234,229,231);
+}
 .footer{
-background: rgb(21,110,209);
+background: rgb(250,225,10);
 grid-area: footer;
 /* border: 3px solid rgb(250,225,10);  */
 /* box-sizing: border-box; */
@@ -165,6 +207,18 @@ text-align: left;
 line-height: 68px;
 padding-left: 25px;
 border: 5px solid black;
-/* box-shadow: inset 0 0 0 3px rgb(228,40,47);; */
+/* box-shadow: inset 0 0 0 3px rgb(228,40,47); */
 margin: 5px;
 }
+
+@media (max-width: 1290px){
+  .content {
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+  }
+.film-item{
+  width: 80%;
+}
+}
+
